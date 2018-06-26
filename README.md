@@ -1,7 +1,7 @@
 reader-stat
 ===
 
-Reads the directory files and adds the stat info.
+Reads the directory files and adds the [stat](http://nodejs.cn/api/fs.html#fs_class_fs_stats) info.
 
 ## Install
 
@@ -48,7 +48,7 @@ readdir('/').then((files) => {
 })
 ```
 
-Read a single directory or file the stat info.
+Read a single directory or file the [stat](http://nodejs.cn/api/fs.html#fs_class_fs_stats) info.
 
 ```js
 const { getStat } = require('reader-stat');
