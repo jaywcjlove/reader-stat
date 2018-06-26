@@ -1,14 +1,22 @@
 {
   "name": "reader-stat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Reads the directory files and adds the stat info.",
   "main": "index.js",
   "scripts": {
     "test": "node test/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "nodejs",
+    "directory",
+    "fs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/reader-stat.git"
+  },
+  "author": "kenny",
+  "license": "MIT",
   "dependencies": {
     "nicki": "^3.0.1"
   }
