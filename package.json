@@ -1,0 +1,15 @@
+{
+  "name": "reader-stat",
+  "version": "1.0.0",
+  "description": "Reads the directory files and adds the stat info.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nicki": "^3.0.1"
+  }
+}
