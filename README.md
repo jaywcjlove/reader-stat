@@ -133,3 +133,7 @@ uidToName(0).then((User) => {
   // output => root
 })
 ```
+
+## License
+
+MIT licensed
