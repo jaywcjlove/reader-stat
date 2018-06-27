@@ -1,20 +1,30 @@
 const fs = require('fs');
 const path = require('path');
 const nicki = require('nicki');
+const Mode = require('stat-mode');
 
 exports.getStat = async (currentPath, names) => {
   if (!names) names = await this.uidToName();
   return new Promise((resolve, reject) => {
-    fs.stat(currentPath, (err, data) => {
+    fs.stat(currentPath, (err, stat) => {
       if (err) reject(err);
       else {
-        if (names && names[data.uid]) {
-          data.uidToName = names[data.uid];
+        const mode = new Mode(stat);
+        if (names && names[stat.uid]) {
+          stat.uidToName = names[stat.uid];
         }
-        data.path = currentPath;
-        data.basename = path.basename(currentPath);
-        data.extname = path.extname(data.basename);
-        resolve(data);
+        stat.mode = {
+          number: stat.mode,
+          string: mode.toString(),
+          owner: { ...mode.owner },
+          group: { ...mode.group },
+          others: { ...mode.others },
+        };
+        // stat.modeStr = mode.toString();
+        stat.path = currentPath;
+        stat.basename = path.basename(currentPath);
+        stat.extname = path.extname(stat.basename);
+        resolve(stat);
       };
     })
   });

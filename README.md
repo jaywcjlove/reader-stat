@@ -22,7 +22,13 @@ readdir('/').then((files) => {
     // output =>
     // Stats {
     //   dev: 16777220,
-    //   mode: 16877,
+    //   mode: {
+    //     number: 16877,
+    //     string: 'drwxr-xr-x',
+    //     owner: { read: true, write: true, execute: true },
+    //     group: { read: true, write: false, execute: true },
+    //     others: { read: true, write: false, execute: true }
+    //   },
     //   nlink: 26,
     //   uid: 0,
     //   gid: 0,
@@ -60,7 +66,13 @@ getStat('/var').then((Stats) => {
   // output =>
   // Stats {
   //   dev: 16777220,
-  //   mode: 16877,
+  //   mode: {
+  //     number: 16877,
+  //     string: 'drwxr-xr-x',
+  //     owner: { read: true, write: true, execute: true },
+  //     group: { read: true, write: false, execute: true },
+  //     others: { read: true, write: false, execute: true }
+  //   },
   //   nlink: 26,
   //   uid: 0,
   //   gid: 0,
