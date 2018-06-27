@@ -1,4 +1,5 @@
-const { readdir, readdirAsync, uidToName, getStat } = require('../');
+const { readdir, readdirAsync, uidToName, getStat, chmod } = require('../');
+const path = require('path');
 
 readdir('/').then((files) => {
   files.map((Stats) => {
@@ -18,3 +19,25 @@ readdirAsync('/var').then((files) => {
 uidToName().then((names) => {
   console.log('names:', names);
 })
+
+const file = path.join(__dirname, 'test.sh');
+
+chmod(file, 777);
+
+chmod(file, {
+  owner: {
+    read: true,
+    write: true,
+    execute: true
+  },
+  group: {
+    read: true,
+    write: true,
+    execute: true
+  },
+  others: {
+    read: true,
+    write: true,
+    execute: true
+  }
+});
