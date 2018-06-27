@@ -6,7 +6,7 @@ const Mode = require('stat-mode');
 exports.getStat = async (currentPath, names) => {
   if (!names) names = await this.uidToName();
   return new Promise((resolve, reject) => {
-    fs.stat(currentPath, (err, stat) => {
+    fs.lstat(currentPath, (err, stat) => {
       if (err) reject(err);
       else {
         const mode = new Mode(stat);
@@ -15,6 +15,7 @@ exports.getStat = async (currentPath, names) => {
         }
         stat.mode = {
           number: stat.mode,
+          isSymbolicLink: mode.isSymbolicLink(),
           string: mode.toString(),
           owner: { ...mode.owner },
           group: { ...mode.group },

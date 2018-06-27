@@ -25,6 +25,7 @@ readdir('/').then((files) => {
     //   mode: {
     //     number: 16877,
     //     string: 'drwxr-xr-x',
+    //     isSymbolicLink: true,
     //     owner: { read: true, write: true, execute: true },
     //     group: { read: true, write: false, execute: true },
     //     others: { read: true, write: false, execute: true }
@@ -69,6 +70,7 @@ getStat('/var').then((Stats) => {
   //   mode: {
   //     number: 16877,
   //     string: 'drwxr-xr-x',
+  //     isSymbolicLink: true,
   //     owner: { read: true, write: true, execute: true },
   //     group: { read: true, write: false, execute: true },
   //     others: { read: true, write: false, execute: true }
