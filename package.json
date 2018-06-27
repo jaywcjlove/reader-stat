@@ -18,6 +18,7 @@
   "author": "kenny",
   "license": "MIT",
   "dependencies": {
+    "deep-extend": "^0.6.0",
     "nicki": "^3.0.1",
     "stat-mode": "^0.2.2"
   }

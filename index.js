@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const nicki = require('nicki');
 const Mode = require('stat-mode');
+const deepExtend = require('deep-extend');
 
 exports.getStat = async (currentPath, names) => {
   if (!names) names = await this.uidToName();
@@ -10,21 +11,20 @@ exports.getStat = async (currentPath, names) => {
       if (err) reject(err);
       else {
         const mode = new Mode(stat);
-        if (names && names[stat.uid]) {
-          stat.uidToName = names[stat.uid];
-        }
-        stat.mode = {
+        stat.extend = {
           number: stat.mode,
           isSymbolicLink: mode.isSymbolicLink(),
           string: mode.toString(),
           owner: { ...mode.owner },
           group: { ...mode.group },
           others: { ...mode.others },
-        };
-        // stat.modeStr = mode.toString();
-        stat.path = currentPath;
-        stat.basename = path.basename(currentPath);
-        stat.extname = path.extname(stat.basename);
+        }
+        if (names && names[stat.uid]) {
+          stat.extend.uidToName = names[stat.uid];
+        }
+        stat.extend.path = currentPath;
+        stat.extend.basename = path.basename(currentPath);
+        stat.extend.extname = path.extname(stat.extend.basename);
         resolve(stat);
       };
     })
@@ -55,4 +55,44 @@ exports.readdir = (dirPath) => {
       return this.getStat(path.join(dirPath, filename), names);
     }));
   })
+}
+
+exports.chmod = async (file, mode) => {
+  if (typeof mode !== 'number' && typeof mode !== 'object') {
+    throw new TypeError('Expected a number or object');
+  }
+  const stat = await this.getStat(file);
+  delete stat.extend;
+  let newMode;
+
+  if (typeof mode === 'object') {
+    const statMode = new Mode(stat);
+    deepExtend(statMode, normalize(mode));
+    newMode = statMode.stat.mode;
+  } else {
+    newMode = parseInt(mode, 8);
+  }
+  return new Promise((resolve, reject) => {
+    fs.chmod(file, newMode, (err, data) => {
+      if (err) reject(err);
+      else resolve(data);
+    });
+  });
+}
+
+function normalize(mode) {
+  var called = false, newOne = {
+    owner: {},
+    group: {},
+    others: {}
+  };
+  ['read', 'write', 'execute'].forEach(function (key) {
+    if (typeof mode[key] === 'boolean') {
+      newOne.owner[key] = mode[key];
+      newOne.group[key] = mode[key];
+      newOne.others[key] = mode[key];
+      called = true;
+    }
+  });
+  return called ? newOne : mode;
 }
