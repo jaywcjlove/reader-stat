@@ -12,9 +12,9 @@ exports.getStat = async (currentPath, names) => {
       else {
         const mode = new Mode(stat);
         stat.extend = {
-          number: stat.mode,
+          modeNum: stat.mode,
+          modeStr: mode.toString(),
           isSymbolicLink: mode.isSymbolicLink(),
-          string: mode.toString(),
           owner: { ...mode.owner },
           group: { ...mode.group },
           others: { ...mode.others },

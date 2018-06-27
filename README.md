@@ -42,9 +42,9 @@ readdir('/').then((files) => {
     //   ctime: 2017-09-26T05:32:50.874Z,
     //   birthtime: 2017-09-26T05:08:14.000Z,
     //   extend: { 
-    //     number: 41453,
+    //     modeNum: 41453,
+    //     modeStr: 'lrwxr-xr-x',
     //     isSymbolicLink: true,
-    //     string: 'lrwxr-xr-x',
     //     owner: { read: true, write: true, execute: true },
     //     group: { read: true, write: false, execute: true },
     //     others: { read: true, write: false, execute: true },
@@ -90,9 +90,9 @@ getStat('/var').then((Stats) => {
   //   ctime: 2017-09-26T05:32:50.874Z,
   //   birthtime: 2017-09-26T05:08:14.000Z,
   //   extend: { 
-  //     number: 41453,
+  //     modeNum: 41453,
+  //     modeStr: 'lrwxr-xr-x',
   //     isSymbolicLink: true,
-  //     string: 'lrwxr-xr-x',
   //     owner: { read: true, write: true, execute: true },
   //     group: { read: true, write: false, execute: true },
   //     others: { read: true, write: false, execute: true },
