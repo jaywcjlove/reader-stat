@@ -32,7 +32,14 @@ exports.getStat = async (currentPath, names) => {
         }
         if (mode.isSymbolicLink()) {
           const link = await this.readLink(currentPath);
-          if (link) stat.extend.symbolicLinkPath = link;
+          if (link) {
+            stat.extend.symbolicLinkPath = link;
+            const linkStat = await this.getStat(/^\//.test(link) ? link : path.join(path.dirname(currentPath), link));
+            if (linkStat) {
+              stat.extend.isSymbolicLinkDir = linkStat.isDirectory();
+              stat.extend.isSymbolicLinkFile = linkStat.isFile();
+            }
+          }
         }
         if (names && names[stat.uid]) {
           stat.extend.uidToName = names[stat.uid];

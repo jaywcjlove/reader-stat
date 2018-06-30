@@ -45,6 +45,8 @@ readdir('/').then((files) => {
     //     modeNum: 41453,
     //     modeStr: 'lrwxr-xr-x',
     //     isSymbolicLink: true,
+    //     isSymbolicLinkDir: true,
+    //     isSymbolicLinkFile: false,
     //     symbolicLinkPath: 'private/var',
     //     owner: { read: true, write: true, execute: true },
     //     group: { read: true, write: false, execute: true },
@@ -68,6 +70,7 @@ const { getStat } = require('reader-stat');
 
 getStat('/var').then((Stats) => {
   console.log('Stats', Stats.isDirectory());
+  console.log('Stats', Stats.isFile());
   // output => true
   console.log('Stats', Stats);
   // output =>
@@ -94,6 +97,8 @@ getStat('/var').then((Stats) => {
   //     modeNum: 41453,
   //     modeStr: 'lrwxr-xr-x',
   //     isSymbolicLink: true,
+  //     isSymbolicLinkDir: true,
+  //     isSymbolicLinkFile: false,
   //     symbolicLinkPath: 'private/var',
   //     owner: { read: true, write: true, execute: true },
   //     group: { read: true, write: false, execute: true },
