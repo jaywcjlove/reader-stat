@@ -4,10 +4,21 @@ const nicki = require('nicki');
 const Mode = require('stat-mode');
 const deepExtend = require('deep-extend');
 
+exports.readLink = (currentPath) => {
+  return new Promise((resolve, reject) => {
+    fs.readlink(currentPath, (err, stat) => {
+      if (err) reject(err);
+      else {
+        resolve(stat);
+      }
+    })
+  });
+}
+
 exports.getStat = async (currentPath, names) => {
   if (!names) names = await this.uidToName();
   return new Promise((resolve, reject) => {
-    fs.lstat(currentPath, (err, stat) => {
+    fs.lstat(currentPath, async (err, stat) => {
       if (err) reject(err);
       else {
         const mode = new Mode(stat);
@@ -18,6 +29,10 @@ exports.getStat = async (currentPath, names) => {
           owner: { ...mode.owner },
           group: { ...mode.group },
           others: { ...mode.others },
+        }
+        if (mode.isSymbolicLink()) {
+          const link = await this.readLink(currentPath);
+          if (link) stat.extend.symbolicLinkPath = link;
         }
         if (names && names[stat.uid]) {
           stat.extend.uidToName = names[stat.uid];
