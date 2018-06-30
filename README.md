@@ -53,6 +53,7 @@ readdir('/').then((files) => {
     //     others: { read: true, write: false, execute: true },
     //     uidToName: 'root',
     //     path: '/var',
+    //     fullpath: '/private/var',
     //     basename: 'var',
     //     extname: ''
     //   }
@@ -105,6 +106,7 @@ getStat('/var').then((Stats) => {
   //     others: { read: true, write: false, execute: true },
   //     uidToName: 'root',
   //     path: '/var',
+  //     fullpath: '/private/var',
   //     basename: 'var',
   //     extname: ''
   //   }

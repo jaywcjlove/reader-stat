@@ -30,11 +30,17 @@ exports.getStat = async (currentPath, names) => {
           group: { ...mode.group },
           others: { ...mode.others },
         }
+        stat.extend.path = currentPath;
+        stat.extend.fullpath = currentPath;
+        stat.extend.basename = path.basename(currentPath);
+        stat.extend.extname = path.extname(stat.extend.basename);
         if (mode.isSymbolicLink()) {
           const link = await this.readLink(currentPath);
           if (link) {
             stat.extend.symbolicLinkPath = link;
-            const linkStat = await this.getStat(/^\//.test(link) ? link : path.join(path.dirname(currentPath), link));
+            const fullpath = /^\//.test(link) ? link : path.join(path.dirname(currentPath), link)
+            const linkStat = await this.getStat(fullpath);
+            stat.extend.fullpath = fullpath;
             if (linkStat) {
               stat.extend.isSymbolicLinkDir = linkStat.isDirectory();
               stat.extend.isSymbolicLinkFile = linkStat.isFile();
@@ -44,9 +50,6 @@ exports.getStat = async (currentPath, names) => {
         if (names && names[stat.uid]) {
           stat.extend.uidToName = names[stat.uid];
         }
-        stat.extend.path = currentPath;
-        stat.extend.basename = path.basename(currentPath);
-        stat.extend.extname = path.extname(stat.extend.basename);
         resolve(stat);
       };
     })
