@@ -65,12 +65,14 @@ exports.readdirAsync = (dirPath) => {
 }
 exports.uidToName = (id) => {
   return new Promise((resolve, reject) => {
-    nicki((err, names) => {
-      if (err) reject(err);
-      else if (id || id === 0) {
+    nicki().then((names) => {
+      console.log(names)
+      if (id || id === 0) {
         resolve(names[id]);
-      } else resolve(names);
-    });
+      } else {
+        resolve(names);
+      }
+    })
   });
 }
 exports.readdir = (dirPath) => {
