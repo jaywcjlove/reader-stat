@@ -1,7 +1,7 @@
 const { readdir, readdirAsync, uidToName, getStat, chmod } = require('../');
 const path = require('path');
 
-readdir('/').then((files) => {
+readdir('/opt/').then((files) => {
   files.map((Stats) => {
     console.log('Statss:1', Stats);
   });
