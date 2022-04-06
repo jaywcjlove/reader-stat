@@ -1,5 +1,10 @@
 reader-stat
 ===
+<!--rehype:style=display: flex; height: 230px; align-items: center; justify-content: center; font-size: 38px;-->
+
+[![Downloads](https://img.shields.io/npm/dm/reader-stat.svg?style=flat)](https://www.npmjs.com/package/reader-stat)
+[![NPM version](https://img.shields.io/npm/v/reader-stat.svg?style=flat)](https://npmjs.org/package/reader-stat)
+[![Build](https://github.com/jaywcjlove/reader-stat/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/reader-stat/actions/workflows/ci.yml)
 
 Reads the directory files and adds the [stat](http://nodejs.cn/api/fs.html#fs_class_fs_stats) info.
 
