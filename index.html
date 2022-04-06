@@ -184,7 +184,12 @@ class MarkdownStyle extends HTMLElement {
 }
 customElements.define('markdown-style', MarkdownStyle);
 </script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px" class="markdown-body">
-    <h1 id="reader-stat"><a class="anchor" aria-hidden="true" tabindex="-1" href="#reader-stat"><span class="octicon octicon-link"></span></a>reader-stat</h1>
+    <h1 style="display: flex; height: 230px; align-items: center; justify-content: center; font-size: 38px;" id="reader-stat"><a class="anchor" aria-hidden="true" tabindex="-1" href="#reader-stat"><span class="octicon octicon-link"></span></a>reader-stat</h1><!--rehype:style=display: flex; height: 230px; align-items: center; justify-content: center; font-size: 38px;-->
+    <p>
+      <a href="https://www.npmjs.com/package/reader-stat"><img src="https://img.shields.io/npm/dm/reader-stat.svg?style=flat" alt="Downloads"></a>
+      <a href="https://npmjs.org/package/reader-stat"><img src="https://img.shields.io/npm/v/reader-stat.svg?style=flat" alt="NPM version"></a>
+      <a href="https://github.com/jaywcjlove/reader-stat/actions/workflows/ci.yml"><img src="https://github.com/jaywcjlove/reader-stat/actions/workflows/ci.yml/badge.svg" alt="Build"></a>
+    </p>
     <p>Reads the directory files and adds the <a href="http://nodejs.cn/api/fs.html#fs_class_fs_stats">stat</a> info.</p>
     <h2 id="install"><a class="anchor" aria-hidden="true" tabindex="-1" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
     <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line"><span class="token function">npm</span> <span class="token function">install</span> reader-stat --save
