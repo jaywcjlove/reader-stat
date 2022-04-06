@@ -220,6 +220,16 @@ chmod(file, {
 });
 ```
 
+## Contributors
+
+As always, thanks to our amazing contributors!
+
+<a href="https://github.com/jaywcjlove/reader-stat/graphs/contributors">
+  <img src="https://jaywcjlove.github.io/reader-stat/CONTRIBUTORS.svg" />
+</a>
+
+Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
+
 ## License
 
 MIT licensed
