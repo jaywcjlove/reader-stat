@@ -20,6 +20,6 @@
   "dependencies": {
     "deep-extend": "^0.6.0",
     "nicki": "^3.0.1",
-    "stat-mode": "^0.3.0"
+    "stat-mode": "^1.0.0"
   }
 }
