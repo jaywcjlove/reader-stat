@@ -3,6 +3,7 @@
   "version": "2.1.4",
   "description": "Reads the directory files and adds the stat info.",
   "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "test": "node test/index.js"
   },
@@ -12,7 +13,8 @@
     "fs"
   ],
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "repository": {
     "type": "git",
