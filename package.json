@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "deep-extend": "^0.6.0",
-    "nicki": "^3.0.1",
+    "nicki": "^6.0.0",
     "stat-mode": "^1.0.0"
   }
 }
