@@ -11,6 +11,9 @@
     "directory",
     "fs"
   ],
+  "files": [
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jaywcjlove/reader-stat.git"
