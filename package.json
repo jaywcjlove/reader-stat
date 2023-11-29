@@ -1,6 +1,6 @@
 {
   "name": "reader-stat",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Reads the directory files and adds the stat info.",
   "funding": "https://jaywcjlove.github.io/#/sponsor",
   "main": "index.js",
